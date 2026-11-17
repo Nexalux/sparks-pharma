@@ -159,6 +159,8 @@ npm test
 
 ## Deploy to Cloudflare Workers
 
+OpenAI Sites packaging is optional. To use it, keep the hosting manifest for your linked Site at `.openai/hosting.json` in your local checkout. Git ignores this directory. Cloudflare Workers builds use the settings below.
+
 Use an existing Cloudflare D1 database. Supply Workers build settings in the shell or an ignored `.env.workers.local` file.
 
 ```dotenv

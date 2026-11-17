@@ -19,6 +19,7 @@
 /out/
 
 # local files
+/.openai/
 .DS_Store
 Thumbs.db
 .idea/

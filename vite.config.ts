@@ -1,12 +1,13 @@
+import { existsSync } from "node:fs";
 import { sites } from "@openai/sites-vite-plugin";
 import vinext from "vinext";
 import { defineConfig, loadEnv } from "vite";
-import hostingConfig from "./.openai/hosting.json";
 
 const SITE_CREATOR_PLACEHOLDER_DATABASE_ID =
   "00000000-0000-4000-8000-000000000000";
 
-const { d1, r2 } = hostingConfig;
+const d1 = "DB";
+const r2 = "MEDIA";
 
 // macOS Seatbelt blocks FSEvents, so Codex previews need polling for HMR.
 const isCodexSeatbeltSandbox = process.env.CODEX_SANDBOX === "seatbelt";
@@ -14,23 +15,12 @@ const isCodexSeatbeltSandbox = process.env.CODEX_SANDBOX === "seatbelt";
 const localBindingConfig = {
   main: "./worker/index.ts",
   compatibility_flags: ["nodejs_compat"],
-  d1_databases: d1
-    ? [
-        {
-          binding: d1,
-          database_name: "site-creator-d1",
-          database_id: SITE_CREATOR_PLACEHOLDER_DATABASE_ID,
-        },
-      ]
-    : [],
-  r2_buckets: r2
-    ? [
-        {
-          binding: r2,
-          bucket_name: "site-creator-r2",
-        },
-      ]
-    : [],
+  d1_databases: [{
+    binding: d1,
+    database_name: "site-creator-d1",
+    database_id: SITE_CREATOR_PLACEHOLDER_DATABASE_ID,
+  }],
+  r2_buckets: [{ binding: r2, bucket_name: "site-creator-r2" }],
 };
 
 function workersDeployment() {
@@ -85,14 +75,15 @@ export default defineConfig(async ({ mode }) => {
           ".env", ".env.*", ".dev.vars*", "*.env", ".npmrc",
           "*.{crt,pem,key,p12,pfx,jks,db,sqlite,sqlite3,dump}",
           "client_secret*.json", "credentials.json", "service-account*.json",
-          "**/.git/**", "**/.wrangler/**", "**/project-archives/**", "**/work/**", "**/outputs/**",
+          "**/.git/**", "**/.openai/**", "**/.wrangler/**", "**/project-archives/**", "**/work/**", "**/outputs/**",
         ],
       },
       ...(isCodexSeatbeltSandbox ? { watch: { useFsEvents: false, usePolling: true } } : {}),
     },
     plugins: [
       vinext(),
-      sites(),
+      // The OpenAI Sites manifest is local to linked checkouts.
+      existsSync(".openai/hosting.json") && sites(),
       cloudflare({
         viteEnvironment: { name: "rsc", childEnvironments: ["ssr"] },
         config: deployment?.config ?? localBindingConfig,
