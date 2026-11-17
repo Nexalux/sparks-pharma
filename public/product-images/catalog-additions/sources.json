@@ -1,0 +1,65 @@
+{
+  "purpose": "Source record for the four attributed demonstration products added on 2026-08-31. Product presentation may vary by manufacturer and batch.",
+  "products": [
+    {
+      "slug": "esomeprazole-40mg-tablets",
+      "images": [
+        {
+          "file": "esomeprazole-40-tablets-1.webp",
+          "source": "TradeIndia",
+          "url": "https://www.tradeindia.com/products/eso-40-tablets-c10476949.html"
+        },
+        {
+          "file": "esomeprazole-40-tablets-2.webp",
+          "source": "Medzone Poonch",
+          "url": "https://www.medzonepoonch.com/products/sompraz-40-tablet-1-strip-15-tablets-esomeprazole-40mg-SKU-3367"
+        }
+      ]
+    },
+    {
+      "slug": "budesonide-200mcg-inhaler",
+      "images": [
+        {
+          "file": "budesonide-200-inhaler-1.webp",
+          "source": "Maya Biotech",
+          "url": "https://mayabiotechindia.com/products/budesonide-inhaler-200-mcg/"
+        },
+        {
+          "file": "budesonide-200-inhaler-2.webp",
+          "source": "Cafoli",
+          "url": "https://cafoli.in/budesonide-200mcg-inhaler"
+        }
+      ]
+    },
+    {
+      "slug": "adapalene-01-gel",
+      "images": [
+        {
+          "file": "adapalene-gel-01-1.webp",
+          "source": "PharmEasy",
+          "url": "https://pharmeasy.in/online-medicine-order/adaferin-0-1-gel-15gm-33042"
+        },
+        {
+          "file": "adapalene-gel-01-2.webp",
+          "source": "Jan Aushadhi Store",
+          "url": "https://janaushadhistore.online/product/adapalene-0-1-gel/"
+        }
+      ]
+    },
+    {
+      "slug": "aspirin-75mg-tablets",
+      "images": [
+        {
+          "file": "aspirin-75-tablets-1.webp",
+          "source": "Avecia Healthcare",
+          "url": "https://www.aveciahealthcare.com/product/avesprin-75-heart-health/"
+        },
+        {
+          "file": "aspirin-75-tablets-2.webp",
+          "source": "West-Coast Pharmaceutical Works",
+          "url": "https://westcoastin.com/pharmaceutical/asp-300-75/682"
+        }
+      ]
+    }
+  ]
+}
